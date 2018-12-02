@@ -382,7 +382,7 @@ void OverviewPage:: showTipOfTheDay()
      {5, "ROIyalists win!"},
      {6, "Your Lambo sales manager online!"},
      {7, "ROCO rocks the place! Go get some today!"},
-     {9, "Kings buy ROIyal Coin, peasants sell it"},
+     {8, "Kings buy ROIyal Coin, peasants sell it"},
      {9, "Watch dat phat juicy ROI..."},
      {10, "Roses are red, violets are blue. The ROCO Platform cares for you!"},
      };
