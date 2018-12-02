@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=ROCO
+Comment=ROCO P2P Cryptocurrency
+Exec=roco-qt %u
+Terminal=false
+Type=Application
+Icon=roco128
+MimeType=x-scheme-handler/roco;
+Categories=Office;Finance;
+Name[ru]=roco-qt.desktop.desktop.desktop

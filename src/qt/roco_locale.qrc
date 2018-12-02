@@ -1,0 +1,29 @@
+<!DOCTYPE RCC><RCC version="1.0">
+    <qresource prefix="/translations">
+        <file alias="bg">locale/roco_bg.qm</file>
+        <file alias="ca">locale/roco_ca.qm</file>
+        <file alias="cs">locale/roco_cs.qm</file>
+        <file alias="da">locale/roco_da.qm</file>
+        <file alias="de">locale/roco_de.qm</file>
+        <file alias="en">locale/roco_en.qm</file>
+        <file alias="en_US">locale/roco_en_US.qm</file>
+        <file alias="es">locale/roco_es.qm</file>
+        <file alias="fi">locale/roco_fi.qm</file>
+        <file alias="fr_FR">locale/roco_fr_FR.qm</file>
+        <file alias="it">locale/roco_it.qm</file>
+        <file alias="ja">locale/roco_ja.qm</file>
+        <file alias="ko_KR">locale/roco_ko_KR.qm</file>
+        <file alias="nl">locale/roco_nl.qm</file>
+        <file alias="pl">locale/roco_pl.qm</file>
+        <file alias="pt">locale/roco_pt.qm</file>
+        <file alias="pt_BR">locale/roco_pt_BR.qm</file>
+        <file alias="ro_RO">locale/roco_ro_RO.qm</file>
+        <file alias="ru">locale/roco_ru.qm</file>
+        <file alias="sk">locale/roco_sk.qm</file>
+        <file alias="sv">locale/roco_sv.qm</file>
+        <file alias="tr">locale/roco_tr.qm</file>
+        <file alias="uk">locale/roco_uk.qm</file>
+        <file alias="zh_CN">locale/roco_zh_CN.qm</file>
+        <file alias="zh_TW">locale/roco_zh_TW.qm</file>
+    </qresource>
+</RCC>

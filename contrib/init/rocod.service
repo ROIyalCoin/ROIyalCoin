@@ -1,0 +1,26 @@
+[Unit]
+Description=ROCO's distributed currency daemon
+After=network.target
+
+[Service]
+User=roco
+Group=roco
+
+Type=forking
+PIDFile=/var/lib/rocod/rocod.pid
+
+ExecStart=/usr/bin/rocod -daemon -pid=/var/lib/rocod/rocod.pid \
+          -conf=/etc/roco/roco.conf -datadir=/var/lib/rocod
+
+ExecStop=-/usr/bin/roco-cli -conf=/etc/roco/roco.conf \
+         -datadir=/var/lib/rocod stop
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target

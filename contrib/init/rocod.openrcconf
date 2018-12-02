@@ -1,0 +1,26 @@
+# /etc/conf.d/rocod: config file for /etc/init.d/rocod
+
+# Config file location
+#BITCOIND_CONFIGFILE="/etc/roco/roco.conf"
+
+# What directory to write pidfile to?  (created and owned by $BITCOIND_USER)
+#BITCOIND_PIDDIR="/var/run/rocod"
+
+# What filename to give the pidfile
+#BITCOIND_PIDFILE="${BITCOIND_PIDDIR}/rocod.pid"
+
+# Where to write rocod data (be mindful that the blockchain is large)
+#BITCOIND_DATADIR="/var/lib/rocod"
+
+# User and group to own rocod process
+#BITCOIND_USER="roco"
+#BITCOIND_GROUP="roco"
+
+# Path to rocod executable
+#BITCOIND_BIN="/usr/bin/rocod"
+
+# Nice value to run rocod under
+#BITCOIND_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+BITCOIND_OPTS=""
