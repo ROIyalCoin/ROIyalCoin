@@ -356,11 +356,8 @@ void OverviewPage::updatBlockChainInfo()
     double BlockRewardROCO =  static_cast<double>(BlockReward)/static_cast<double>(COIN);
 
     ui->label_CurrentBlock_value->setText(QString::number(CurrentBlock));
-      if (chainActive.Height() < 5000)
-        ui->label_CurrentBlockReward_value->setText("0");
-      else
-        ui->label_CurrentBlockReward_value->setText(QString::number(BlockRewardROCO));
-
+    ui->label_CurrentBlockReward_value->setText(QString::number(BlockRewardROCO));
+   
   }
 }
 

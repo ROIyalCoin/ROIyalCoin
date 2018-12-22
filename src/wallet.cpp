@@ -2446,7 +2446,7 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, uint32_t nTime, unsigne
     // Calculate reward
     const CBlockIndex* pIndex0 = chainActive.Tip();
 
-    nCredit += GetBlockValue(pIndex0->nHeight, nTime);
+    nCredit += GetBlockValue(pIndex0->nHeight + 1, nTime);
 
     //Masternode payment
     CAmount MnReward;

@@ -1626,7 +1626,7 @@ CAmount GetBlockValue(int nHeight, uint32_t nTime)
             return 10 * COIN;
     }
 
-    if (nHeight == 0) {
+    if (nHeight == 1) {
         nSubsidy = 105000 * COIN;
     }
     else if (nHeight <= 17500 && nHeight > 0) {
@@ -1639,97 +1639,97 @@ CAmount GetBlockValue(int nHeight, uint32_t nTime)
         nSubsidy = 6 * COIN;
     }
 	  else if (nHeight <= 40000 && nHeight >= 32501) {
-        nSubsidy = 7.5 * COIN;
+        nSubsidy = 4 * COIN;
     }
 	  else if (nHeight <= 47500 && nHeight >= 40001) {
-        nSubsidy = 9 * COIN;
+        nSubsidy = 3.9 * COIN;
     }
   	else if (nHeight <= 55000 && nHeight >= 47501) {
-        nSubsidy = 10.5 * COIN;
+        nSubsidy = 3.8 * COIN;
     }
 	  else if (nHeight <= 62500 && nHeight >= 55001) {
-        nSubsidy = 12 * COIN;
+        nSubsidy = 3.7 * COIN;
     }
   	else if (nHeight <= 70000 && nHeight >= 62501) {
-        nSubsidy = 13.5 * COIN;
+        nSubsidy = 3.6 * COIN;
     }
 	  else if (nHeight <= 77500 && nHeight >= 70001) {
-        nSubsidy = 15 * COIN;
+        nSubsidy = 3.5 * COIN;
     }
 	  else if (nHeight <= 85000 && nHeight >= 77501) {
-        nSubsidy = 16.5 * COIN;
+        nSubsidy = 3.4 * COIN;
     }
 	  else if (nHeight <= 92500 && nHeight >= 85001) {
-        nSubsidy = 18 * COIN;
+        nSubsidy = 3.3 * COIN;
     }
   	else if (nHeight <= 100000 && nHeight >= 92501) {
-        nSubsidy = 19.5 * COIN;
+        nSubsidy = 3.2 * COIN;
     }
 	  else if (nHeight <= 107500 && nHeight >= 100001) {
-        nSubsidy = 21 * COIN;
+        nSubsidy = 3.1 * COIN;
     }
 	  else if (nHeight <= 115000 && nHeight >= 107501) {
-        nSubsidy = 22.5 * COIN;
+        nSubsidy = 3 * COIN;
     }
 	  else if (nHeight <= 122500 && nHeight >= 115001) {
-        nSubsidy = 24 * COIN;
+        nSubsidy = 2.9 * COIN;
     }
 	  else if (nHeight <= 130000 && nHeight >= 122501) {
-        nSubsidy = 25.5 * COIN;
+        nSubsidy = 2.8 * COIN;
     }
 	  else if (nHeight <= 137500 && nHeight >= 130001) {
-        nSubsidy = 27 * COIN;
+        nSubsidy = 2.7 * COIN;
     }
 	  else if (nHeight <= 145000 && nHeight >= 137501) {
-        nSubsidy = 28.5 * COIN;
+        nSubsidy = 2.6 * COIN;
     }
 	  else if (nHeight <= 152500 && nHeight >= 145001) {
-        nSubsidy = 30 * COIN;
+        nSubsidy = 2.5 * COIN;
     }
 	  else if (nHeight <= 160000 && nHeight >= 152501) {
-        nSubsidy = 29 * COIN;
+        nSubsidy = 2.4 * COIN;
     }
   	else if (nHeight <= 167500 && nHeight >= 160001) {
-        nSubsidy = 28 * COIN;
+        nSubsidy = 2.3 * COIN;
     }
   	else if (nHeight <= 175000 && nHeight >= 167501) {
-        nSubsidy = 27 * COIN;
+        nSubsidy = 2.2 * COIN;
     }
   	else if (nHeight <= 182500 && nHeight >= 175001) {
-        nSubsidy = 26 * COIN;
+        nSubsidy = 2.1 * COIN;
     }
   	else if (nHeight <= 190000 && nHeight >= 182501) {
-        nSubsidy = 25 * COIN;
+        nSubsidy = 2 * COIN;
     }
   	else if (nHeight <= 197500 && nHeight >= 190001) {
-        nSubsidy = 24 * COIN;
+        nSubsidy = 1.9 * COIN;
     }
 	  else if (nHeight <= 205000 && nHeight >= 197501) {
-        nSubsidy = 23 * COIN;
+        nSubsidy = 1.8 * COIN;
     }
   	else if (nHeight <= 212500 && nHeight >= 205001) {
-        nSubsidy = 22 * COIN;
+        nSubsidy = 1.7 * COIN;
     }
   	else if (nHeight <= 220000 && nHeight >= 212501) {
-        nSubsidy = 21 * COIN;
+        nSubsidy = 1.6 * COIN;
     }
   	else if (nHeight <= 227500 && nHeight >= 220001) {
-        nSubsidy = 20 * COIN;
+        nSubsidy = 1.5 * COIN;
     }
         else if (nHeight <= 235000 && nHeight >= 227501) {
-        nSubsidy = 19 * COIN;
+        nSubsidy = 1.4 * COIN;
     }
   	else if (nHeight <= 242500 && nHeight >= 235001) {
-        nSubsidy = 18 * COIN;
+        nSubsidy = 1.3 * COIN;
     }
   	else if (nHeight <= 250000 && nHeight >= 242501) {
-        nSubsidy = 17 * COIN;
+        nSubsidy = 1.2 * COIN;
     }
 	  else if (nHeight <= 257500 && nHeight >= 250001) {
-        nSubsidy = 16 * COIN;
+        nSubsidy = 1.1 * COIN;
     }
 	  else if (nHeight >= 257501) {
-        nSubsidy = 15 * COIN;
+        nSubsidy = 1 * COIN;
     }
 	  else {
         nSubsidy = 0 * COIN;
@@ -2278,7 +2278,7 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
     LogPrint("bench", "      - Connect %u transactions: %.2fms (%.3fms/tx, %.3fms/txin) [%.2fs]\n", (unsigned)block.vtx.size(), 0.001 * (nTime1 - nTimeStart), 0.001 * (nTime1 - nTimeStart) / block.vtx.size(), nInputs <= 1 ? 0 : 0.001 * (nTime1 - nTimeStart) / (nInputs - 1), nTimeConnect * 0.000001);
 
     //PoW phase redistributed fees to miner. PoS stage destroys fees.
-    CAmount nExpectedMint = GetBlockValue(pindex->pprev->nHeight, block.nTime);
+    CAmount nExpectedMint = GetBlockValue(pindex->pprev->nHeight + 1, block.nTime);
     if (block.IsProofOfWork())
         nExpectedMint += nFees;
 
@@ -5440,7 +5440,8 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
 int ActiveProtocol()
 {
 //    if (IsSporkActive(SPORK_X_NEW_PROTOCOL_ENFORCEMENT_X))
-//            return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
+    if(Params().ForkTimestamp() < GetAdjustedTime())
+        return MIN_PEER_PROTO_VERSION_AFTER_ENFORCEMENT;
 
     return MIN_PEER_PROTO_VERSION_BEFORE_ENFORCEMENT;
 }

@@ -55,12 +55,13 @@ static void convertSeed6(std::vector<CAddress>& vSeedsOut, const SeedSpec6* data
 // + Contains no strange transactions
 static Checkpoints::MapCheckpoints mapCheckpoints =
     boost::assign::map_list_of(0, uint256("0000044b23d56dca662f50b26ceaf335939a966ae349e59edf0150d965551ecb"))
-                              (120, uint256("00000003f4afc8b6a6c54f507b212a0994ddcb04efb9f936a84225dea9f19b3b"));
+                              (120, uint256("00000003f4afc8b6a6c54f507b212a0994ddcb04efb9f936a84225dea9f19b3b"))
+                              (26000, uint256("3574ead47cc62bf4b9071563d46065e98d21f75b6f3b79707f27ebc478127462"));
 
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
-    1543777290, // * UNIX timestamp of last checkpoint block
-    156,      // * total number of transactions between genesis and last checkpoint
+    1545367790, // * UNIX timestamp of last checkpoint block
+    53759,      // * total number of transactions between genesis and last checkpoint
                 //   (the tx=... number in the SetBestChain debug.log lines)
     2000        // * estimated number of transactions per day after checkpoint
 };
@@ -103,7 +104,7 @@ public:
         bnProofOfWorkLimit = ~uint256(0) >> 20;
         bnStartWork = ~uint256(0) >> 20;
 
-        nMaxReorganizationDepth = 100;
+        nMaxReorganizationDepth = 300;
         nEnforceBlockUpgradeMajority = 750;
         nRejectBlockOutdatedMajority = 950;
         nToCheckBlockUpgradeMajority = 1000;
@@ -113,9 +114,10 @@ public:
         nMasternodeCountDrift = 3;
         nMaxMoneyOut = 21000000 * COIN;
 
-        nStartMasternodePaymentsBlock = 17501;
-
         /** Height or Time Based Activations **/
+
+        nStartMasternodePaymentsBlock = 17501;
+        nForkTimestamp = 1545580800;  // Sunday, 23 December 2018, 16:00:00 GMT
         nLastPOWBlock = 150;
         nModifierUpdateBlock = std::numeric_limits<decltype(nModifierUpdateBlock)>::max();
 

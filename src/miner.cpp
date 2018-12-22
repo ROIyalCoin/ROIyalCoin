@@ -337,7 +337,7 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn, CWallet* pwallet, 
         }
 
         txNew.vin[0].scriptSig = CScript() << nHeight << OP_0;
-        CAmount block_value = GetBlockValue(nHeight - 1, pblock->nTime);
+        CAmount block_value = GetBlockValue(nHeight, pblock->nTime);
         // Compute final transaction.
         if (!fProofOfStake) {
 

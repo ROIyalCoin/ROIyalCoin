@@ -315,7 +315,7 @@ unsigned CMasternode::Level(CAmount vin_val, int blockHeight)
       }
     } else if (blockHeight >= 115001) {
       switch(vin_val) {
-          case 5000 * COIN: return 1;
+          case 3000 * COIN: return 1;
       }
     }
 
