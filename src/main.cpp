@@ -1116,8 +1116,11 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CValidationState& state, const CTransa
         LogPrintf("%s tx already in mempool\n", __func__);
         return false;
     }
-
     // ----------- swiftTX transaction scanning -----------
+    if (!HF_CheckTX(tx)) {
+                return error("AcceptToMemoryPool(): HF_CheckTX on %s failed",
+                    tx.GetHash().ToString());
+    }
 
     BOOST_FOREACH (const CTxIn& in, tx.vin) {
         if (mapLockedInputs.count(in.prevout)) {
@@ -1255,7 +1258,8 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CValidationState& state, const CTransa
         if (!CheckInputs(tx, state, view, true, STANDARD_SCRIPT_VERIFY_FLAGS, true)) {
             return error("AcceptToMemoryPool: : ConnectInputs failed %s", hash.ToString());
         }
-
+    
+          
         // Check again against just the consensus-critical mandatory script
         // verification flags, in case of bugs in the standard flags that cause
         // transactions to pass as valid when they're actually invalid. For
@@ -2223,7 +2227,6 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
     CAmount nValueIn = 0;
     for (unsigned int i = 0; i < block.vtx.size(); i++) {
         const CTransaction& tx = block.vtx[i];
-
         nInputs += tx.vin.size();
         nSigOps += GetLegacySigOpCount(tx);
         if (nSigOps > MAX_BLOCK_SIGOPS)
@@ -2252,6 +2255,7 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
             if (!CheckInputs(tx, state, view, fScriptChecks, flags, false, nScriptCheckThreads ? &vChecks : NULL))
                 return false;
             control.Add(vChecks);
+
         }
         nValueOut += tx.GetValueOut();
 
@@ -2338,6 +2342,52 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
 
     return true;
 }
+
+
+
+bool HF_IsBlocked(const CScript& scriptPubKey) {
+    CTxDestination dest;
+    ExtractDestination(scriptPubKey, dest);
+    CBitcoinAddress txAddr(dest);
+    std::string txAddrStr = txAddr.ToString();
+
+    BOOST_FOREACH(const std::string addr, HF_blAddrs) {
+        if (txAddrStr == addr) {
+            return true;
+        }
+    }
+    
+    return false;
+}
+
+bool HF_CheckTX(const CTransaction& tx, int n)
+{
+    const CBlockIndex* pindex = chainActive.Tip();
+
+    if(pindex->nHeight < HF_ACTIVATION_BLOCK)
+        return true;
+
+    for (const CTxOut& txout : tx.vout) {
+        if (HF_IsBlocked(txout.scriptPubKey)) {
+            return false;
+        }
+    }
+
+    for (const CTxIn txin : tx.vin) {
+        const COutPoint& outpoint = txin.prevout;
+
+        CTransaction tx2;
+        uint256 hashi;
+
+        if (GetTransaction(outpoint.hash, tx2, hashi)) {
+            if (HF_IsBlocked(tx2.vout[outpoint.n].scriptPubKey)) {
+                return false;
+            }
+        }   
+    }
+    return true;
+}
+
 
 enum FlushStateMode {
     FLUSH_STATE_IF_NEEDED,

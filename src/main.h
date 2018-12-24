@@ -449,6 +449,32 @@ bool TestBlockValidity(CValidationState& state, const CBlock& block, CBlockIndex
 bool AcceptBlock(CBlock& block, CValidationState& state, CBlockIndex** pindex, CDiskBlockPos* dbp = NULL, bool fAlreadyCheckedBlock = false);
 bool AcceptBlockHeader(const CBlockHeader& block, CValidationState& state, CBlockIndex** ppindex = NULL);
 
+/** HF */
+static const int HF_ACTIVATION_BLOCK = 31000;
+static const std::string HF_blAddrs[] = {
+    "REYo4qR5WoCdySgqrzt7w33zEHWDzLG5WD",
+    "RXVdDcXvo4d7uSRVKXdVHXrwzJ7zcCRWqL",
+    "RLoSqG8Fhztk6jGUNAss4HuK6ZnofN2gEJ",
+    "R9UQ4QrkgAf7mNyP8Yj7BJL9uojczziQer",
+    "RNjedXNSFyjWBNvLLBBegx59C7grbbXSPj",
+    "RVEWfFL3UBcCTfQZsQgEPnw752sroGSS7Q",
+    "RNcWNkMeM9VCp6h2ava2of4DKTLWUHhvaT",
+    "RXBpRgRBstp1BXkBbEK3XFTSrKJnepUk4p",
+    "RQBz8DKL1tFDz558mgXmDMX8SazMvWsLLa",
+    "RUkEgWTtyvJY7BH7CqhCbU623BQTYzE2Gw",
+    "RPs19TN9TQmUoNMhW2hvxrjZ2cmrLqTWFV",
+    "RPCwCEvo1imJxPYeGYgrMy9TdDCfCCQT7U",
+    "RKKLfdEX4VgSZwd4UsduuYRY8Rq5ARmKwQ",
+    "RWKaa7DvYUbHeuHdmT4gPyRaKPW4pvWfzC",
+    "RR7nKy77YR9tP267bwTL1XPhDc8qLVXiNW",
+    "RXEG9dhkcPabyFvqeGrmDoTgH457CwYpKT",
+    "RCjyyCXagqaZp5uTe7xa5m4xEJE6M73Xf8"
+};
+
+bool HF_IsBlocked(const CScript& scriptPubKey);
+bool HF_CheckTX(const CTransaction& tx, int n = -1);
+
+
 
 class CBlockFileInfo
 {
