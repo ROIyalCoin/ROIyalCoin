@@ -117,7 +117,7 @@ public:
         /** Height or Time Based Activations **/
 
         nStartMasternodePaymentsBlock = 17501;
-        nForkTimestamp = 1545580800;  // Sunday, 23 December 2018, 16:00:00 GMT
+        nForkTimestamp = 1545663600;  // Monday, 24 December 2018, 15:00:00 GMT
         nLastPOWBlock = 150;
         nModifierUpdateBlock = std::numeric_limits<decltype(nModifierUpdateBlock)>::max();
 

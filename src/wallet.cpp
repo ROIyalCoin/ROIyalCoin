@@ -2450,7 +2450,7 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, uint32_t nTime, unsigne
 
     //Masternode payment
     CAmount MnReward;
-    CAmount mnblock_value = GetBlockValue(chainActive.Height(), nTime);
+    CAmount mnblock_value = GetBlockValue(chainActive.Height() + 1, nTime);
     MnReward = masternodePayments.FillBlockPayee(txNew, mnblock_value, true);
 
     nCredit -= MnReward;
