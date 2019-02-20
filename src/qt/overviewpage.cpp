@@ -339,10 +339,10 @@ void OverviewPage::updateMasternodeInfo()
   // update collateral info
   if (chainActive.Height() >= 0 && chainActive.Height() < 62501) {
     ui->MNCollateral->setText("1000 Coins");
-  } else if (chainActive.Height() >= 62501 && chainActive.Height() < 107501) {
+  } else if (chainActive.Height() >= 62501 && chainActive.Height() < 115001) {
     ui->MNCollateral->setText("2000 Coins");
-  } else if (chainActive.Height() >= 107501) {
-    ui->MNCollateral->setText("5000 Coins");
+  } else if (chainActive.Height() >= 115001) {
+    ui->MNCollateral->setText("3000 Coins");
   }
 
 }
@@ -357,7 +357,7 @@ void OverviewPage::updatBlockChainInfo()
 
     ui->label_CurrentBlock_value->setText(QString::number(CurrentBlock));
     ui->label_CurrentBlockReward_value->setText(QString::number(BlockRewardROCO));
-   
+
   }
 }
 
