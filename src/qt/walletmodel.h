@@ -13,7 +13,7 @@
 
 #include "allocators.h" /* for SecureString */
 #include "swifttx.h"
-#include "wallet.h"
+#include "wallet/wallet.h"
 
 #include <map>
 #include <vector>
@@ -169,8 +169,6 @@ public:
     bool changePassphrase(const SecureString& oldPass, const SecureString& newPass);
     // Is wallet unlocked for anonymization only?
     bool isAnonymizeOnlyUnlocked();
-    // Wallet backup
-    bool backupWallet(const QString& filename);
 
     // RAI object for unlocking wallet, returned by requestUnlock()
     class UnlockContext

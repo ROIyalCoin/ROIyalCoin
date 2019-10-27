@@ -13,13 +13,13 @@
 #include "masternode-sync.h"
 #include "net.h"
 #include "netbase.h"
-#include "rpcserver.h"
+#include "rpc/server.h"
 #include "spork.h"
 #include "timedata.h"
 #include "util.h"
 #ifdef ENABLE_WALLET
-#include "wallet.h"
-#include "walletdb.h"
+#include "wallet/wallet.h"
+#include "wallet/walletdb.h"
 #endif
 
 #include <stdint.h>
@@ -252,7 +252,6 @@ UniValue spork(const UniValue& params, bool fHelp)
 
         //broadcast new spork
         if (sporkManager.UpdateSpork(nSporkID, nValue)) {
-            ExecuteSpork(nSporkID, nValue);
             return "success";
         } else {
             return "failure";

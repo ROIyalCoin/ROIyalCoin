@@ -6,9 +6,9 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "rpcclient.h"
+#include "rpc/client.h"
 
-#include "rpcprotocol.h"
+#include "rpc/protocol.h"
 #include "ui_interface.h"
 #include "util.h"
 
@@ -72,6 +72,7 @@ static const CRPCConvertParam vRPCConvertParams[] = {
     {"listunspent", 0},
     {"listunspent", 1},
     {"listunspent", 2},
+    {"listunspent", 3},
     {"getblock", 1},
     {"getblockheader", 1},
     {"gettransaction", 1},

@@ -124,7 +124,7 @@ public:
         return payment != vecPayments.cend();
     }
 
-    bool IsTransactionValid(const CTransaction& txNew, uint32_t nTime);
+    bool IsTransactionValid(const CTransaction& txNew);
     std::string GetRequiredPaymentsString();
 
     ADD_SERIALIZE_METHODS;
@@ -219,7 +219,7 @@ private:
 public:
     std::map<uint256, CMasternodePaymentWinner> mapMasternodePayeeVotes;
     std::map<int, CMasternodeBlockPayees> mapMasternodeBlocks;
-    std::map<uint256, int> mapMasternodesLastVote; // ((outMasternode.hash + outMasternode.n) << 4) + mnlevel, nBlockHeight
+    std::map<uint256, int> mapMasternodesLastVote; //prevout.hash + prevout.n + mnlevel, nBlockHeight
 
     CMasternodePayments()
     {
@@ -241,8 +241,8 @@ public:
     void CleanPaymentList();
 
     bool GetBlockPayee(int nBlockHeight, unsigned mnlevel, CScript& payee);
-    bool IsTransactionValid(const CTransaction& txNew, int nBlockHeight, uint32_t nTime);
-    bool IsScheduled(CMasternode& mn, int nSameLevelMNCount, int nNotBlockHeight) const;
+    bool IsTransactionValid(const CTransaction& txNew, int nBlockHeight);
+    bool IsScheduled(CMasternode& mn, int nNotBlockHeight);
     bool CanVote(const COutPoint& outMasternode, int nBlockHeight, unsigned mnlevel);
 
     int GetMinMasternodePaymentsProto();

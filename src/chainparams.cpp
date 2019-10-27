@@ -56,7 +56,8 @@ static void convertSeed6(std::vector<CAddress>& vSeedsOut, const SeedSpec6* data
 static Checkpoints::MapCheckpoints mapCheckpoints =
     boost::assign::map_list_of(0, uint256("0000044b23d56dca662f50b26ceaf335939a966ae349e59edf0150d965551ecb"))
                               (120, uint256("00000003f4afc8b6a6c54f507b212a0994ddcb04efb9f936a84225dea9f19b3b"))
-                              (26000, uint256("3574ead47cc62bf4b9071563d46065e98d21f75b6f3b79707f27ebc478127462"));
+                              (26000, uint256("3574ead47cc62bf4b9071563d46065e98d21f75b6f3b79707f27ebc478127462"))
+                            ;
 
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
@@ -66,21 +67,9 @@ static const Checkpoints::CCheckpointData data = {
     2000        // * estimated number of transactions per day after checkpoint
 };
 
-static Checkpoints::MapCheckpoints mapCheckpointsTestnet =
-    boost::assign::map_list_of(0, uint256("00000be22bc6bb37018785e8e9f7725fea51d31c2c43b4fc71533ce3ebe132e4"));
-static const Checkpoints::CCheckpointData dataTestnet = {
-    &mapCheckpointsTestnet,
-    1543600900,
-    0,
-    250};
+static Checkpoints::MapCheckpoints mapCheckpointsTestnet = {};
 
-static Checkpoints::MapCheckpoints mapCheckpointsRegtest =
-    boost::assign::map_list_of(0, uint256("00000833a68c48f8d6a003d9d525d1b82b89c00939d2455222a71e343ec4274b"));
-static const Checkpoints::CCheckpointData dataRegtest = {
-    &mapCheckpointsRegtest,
-    1543600950,
-    0,
-    100};
+static Checkpoints::MapCheckpoints mapCheckpointsRegtest = {};
 
 class CMainParams : public CChainParams
 {
@@ -117,7 +106,6 @@ public:
         /** Height or Time Based Activations **/
 
         nStartMasternodePaymentsBlock = 17501;
-        nForkTimestamp = 1545663600;  // Monday, 24 December 2018, 15:00:00 GMT
         nLastPOWBlock = 150;
         nModifierUpdateBlock = std::numeric_limits<decltype(nModifierUpdateBlock)>::max();
 
@@ -152,7 +140,7 @@ public:
         assert(genesis.hashMerkleRoot == uint256("4c75df3248817ac5beeca46b6b37d0847364ae7f4a48182f3f7cb301af384b6c"));
 
         vSeeds.push_back(CDNSSeedData("roiyalcoin.pro", "seeds.seeder01.roiyalcoin.pro"));     // Primary DNS Seeder
-
+        
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 60);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 18);
         base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 214);
@@ -256,7 +244,6 @@ public:
     }
     const Checkpoints::CCheckpointData& Checkpoints() const
     {
-        return dataTestnet;
     }
 };
 static CTestNetParams testNetParams;
@@ -305,7 +292,6 @@ public:
     }
     const Checkpoints::CCheckpointData& Checkpoints() const
     {
-        return dataRegtest;
     }
 };
 static CRegTestParams regTestParams;
@@ -328,8 +314,6 @@ public:
         fMiningRequiresPeers = false;
         fDefaultConsistencyChecks = true;
         fMineBlocksOnDemand = true;
-
-
     }
 
     const Checkpoints::CCheckpointData& Checkpoints() const

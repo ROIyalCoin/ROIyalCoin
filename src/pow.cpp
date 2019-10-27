@@ -16,8 +16,9 @@
 
 #include <math.h>
 
+uint256 nPoSTargetLimit = (~uint256(0) >> 24);
 
-unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, uint32_t nTime)
+unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast)
 {
     /* current difficulty formula, ROCO - DarkGravity v3, written by Evan Duffield - evan@dashpay.io */
     const CBlockIndex* BlockLastSolved = pindexLast;
@@ -30,14 +31,24 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, uint32_t nTime)
     uint256 PastDifficultyAverage;
     uint256 PastDifficultyAveragePrev;
 
-    if (BlockLastSolved == NULL || BlockLastSolved->nHeight == 0 || BlockLastSolved->nHeight < PastBlocksMin) {
+    // simply to disrupt the chain and force clients over
+    //if (pindexLast->nHeight + 1 > nVersionFork - 15 &&
+    //    pindexLast->nHeight + 1 < nVersionFork + 15)
+	//return nPoSTargetLimit.GetCompact();
+
+    if (BlockLastSolved == NULL ||
+        BlockLastSolved->nHeight == 0 ||
+        BlockLastSolved->nHeight < PastBlocksMin)
         return Params().StartWork().GetCompact();
-    }
 
     if (pindexLast->nHeight > Params().LAST_POW_BLOCK()) {
-        uint256 bnTargetLimit = (~uint256(0) >> 24);
+
         int64_t nTargetSpacing = 60;
+
+        // close retarget window span
         int64_t nTargetTimespan = 60 * 40;
+        //if (pindexLast->nHeight >= (nVersionFork - 15))
+        //    nTargetTimespan = 60 * 5;
 
         int64_t nActualSpacing = 0;
         if (pindexLast->nHeight != 0)
@@ -55,8 +66,8 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, uint32_t nTime)
         bnNew *= ((nInterval - 1) * nTargetSpacing + nActualSpacing + nActualSpacing);
         bnNew /= ((nInterval + 1) * nTargetSpacing);
 
-        if (bnNew <= 0 || bnNew > bnTargetLimit)
-            bnNew = bnTargetLimit;
+        if (bnNew <= 0 || bnNew > nPoSTargetLimit)
+            bnNew = nPoSTargetLimit;
 
         return bnNew.GetCompact();
     }
