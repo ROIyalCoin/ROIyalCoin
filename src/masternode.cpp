@@ -1,6 +1,6 @@
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2017 The PIVX developers
-// Copyright (c) 2018 The ROIyalCoin Core developers
+// Copyright (c) 2018-2020 The ROIyalCoin Core developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -340,9 +340,13 @@ unsigned CMasternode::Level(CAmount vin_val, int blockHeight)
       switch(vin_val) {
           case 2000 * COIN: return 1;
       }
-    } else if (blockHeight >= 115001) {
+    } else if (blockHeight >= 115001 && blockHeight < 970001) {
       switch(vin_val) {
           case 3000 * COIN: return 1;
+      }
+    } else if (blockHeight >= 970001) {
+      switch(vin_val) {
+          case 10000 * COIN: return 1;
       }
     }
 

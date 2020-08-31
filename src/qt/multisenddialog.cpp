@@ -1,7 +1,7 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2017 The PIVX developers
-// Copyright (c) 2018 The ROIyalCoin Core developers
+// Copyright (c) 2018-2020 The ROIyalCoin Core developers
 
 #include "multisenddialog.h"
 #include "addressbookpage.h"
