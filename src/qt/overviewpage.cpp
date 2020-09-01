@@ -320,8 +320,10 @@ void OverviewPage::updateMasternodeInfo()
     ui->MNCollateral->setText("1000 Coins");
   } else if (chainActive.Height() >= 62501 && chainActive.Height() < 115001) {
     ui->MNCollateral->setText("2000 Coins");
-  } else if (chainActive.Height() >= 115001) {
+  } else if (chainActive.Height() >= 115001 && chainActive.Height() < 970001) {
     ui->MNCollateral->setText("3000 Coins");
+  } else if (chainActive.Height() >= 970001) {
+    ui->MNCollateral->setText("10000 Coins");
   }
 
 }
