@@ -22,8 +22,8 @@ class CSporkMessage;
 class CSporkManager;
 
 CSporkManager sporkManager;
-
 std::map<uint256, CSporkMessage> mapSporks;
+
 std::map<int, CSporkMessage> mapSporksActive;
 
 // PIVX: on startup load spork values from previous session if they exist in the sporkDB
@@ -141,7 +141,6 @@ bool IsSporkActive(int nSporkID)
     if (r == -1) return false;
     return r < GetTime();
 }
-
 
 void ReprocessBlocks(int nBlocks)
 {
